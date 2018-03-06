@@ -77,7 +77,14 @@ namespace BitcoinDatabaseGenerator
                 this.RebuildAllHeavyIndexes();
             }
 
-            this.DeleteStaleBlocks();
+            try
+            {
+                this.DeleteStaleBlocks();
+            } catch (Exception e)
+            {
+                Console.WriteLine("Failed to delete stale blocks.");
+                Console.WriteLine(e.ToString());
+            }
 
             this.UpdateTransactionSourceOutputId();
 
