@@ -39,10 +39,6 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BitcoinBlockchain, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BitcoinBlockchain.1.2.5.0\lib\net45\BitcoinBlockchain.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -312,6 +308,10 @@
     <ProjectReference Include="..\AdoNetHelpers\AdoNetHelpers.csproj">
       <Project>{917927c4-3159-455f-82e3-18d0578bfa3a}</Project>
       <Name>AdoNetHelpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BitcoinBlockchain\BitcoinBlockchain.csproj">
+      <Project>{D6982D0E-59C3-487B-A2C1-60AD7E1D0A32}</Project>
+      <Name>BitcoinBlockchain</Name>
     </ProjectReference>
     <ProjectReference Include="..\ZeroHelpers\ZeroHelpers.csproj">
       <Project>{840f367f-12cf-4ec5-9d9d-bcf9ed9bb4b1}</Project>

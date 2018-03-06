@@ -1,0 +1,6 @@
+C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\bin\Release\BitcoinBlockchain.XML
+C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\bin\Release\BitcoinBlockchain.dll
+C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\bin\Release\BitcoinBlockchain.pdb
+C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\obj\Release\BitcoinBlockchain.csproj.CoreCompileInputs.cache
+C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\obj\Release\BitcoinBlockchain.dll
+C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\obj\Release\BitcoinBlockchain.pdb

@@ -43,10 +43,6 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BitcoinBlockchain, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BitcoinBlockchain.1.2.5.0\lib\net45\BitcoinBlockchain.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
@@ -88,6 +84,10 @@
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BitcoinBlockchain\BitcoinBlockchain.csproj">
+      <Project>{D6982D0E-59C3-487B-A2C1-60AD7E1D0A32}</Project>
+      <Name>BitcoinBlockchain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BitcoinDataLayerAdoNet\BitcoinDataLayerAdoNet.csproj">
       <Project>{c597e481-962b-4d66-ae8a-409e11519344}</Project>
       <Name>BitcoinDataLayerAdoNet</Name>
