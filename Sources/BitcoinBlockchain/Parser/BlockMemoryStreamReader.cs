@@ -90,6 +90,14 @@ namespace BitcoinBlockchain.Parser
         }
 
         /// <summary>
+        /// Wrapper over <c>binaryReader.ReadSBytes</c>
+        /// </summary>
+        public SByte ReadSByte()
+        {
+            return this.binaryReader.ReadSByte();
+        }
+
+        /// <summary>
         /// Wrapper over <c>binaryReader.ReadUInt16</c>
         /// </summary>
         public UInt16 ReadUInt16()

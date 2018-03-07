@@ -161,6 +161,7 @@ namespace BitcoinBlockchain.Parser
                 blockHeader.BlockVersion != 4 &&
                 blockHeader.BlockVersion != 0x20000000 &&
                 blockHeader.BlockVersion != 0x20000001 &&
+                blockHeader.BlockVersion != 0x20000003 &&
                 blockHeader.BlockVersion != 0x30000001 &&
                 blockHeader.BlockVersion != 0x08000004 &&
                 blockHeader.BlockVersion != 0x20000002 &&
@@ -169,7 +170,7 @@ namespace BitcoinBlockchain.Parser
             {
                 // IS BLOCK VERSION IMPORTANT?
 
-                Console.Write("*");
+                Console.Write("\r*");
                 // Console.WriteLine(string.Format(CultureInfo.InvariantCulture, "Unknown block version: {0} ({0:X}), continuing anyway...", blockHeader.BlockVersion));
                 // throw new UnknownBlockVersionException(string.Format(CultureInfo.InvariantCulture, "Unknown block version: {0} ({0:X}).", blockHeader.BlockVersion));
             }
@@ -222,15 +223,33 @@ namespace BitcoinBlockchain.Parser
             TransactionInput transactionInput = new TransactionInput();
 
             transactionInput.SourceTransactionHash = new ByteArray(blockMemoryStreamReader.ReadBytes(32).ReverseByteArray());
-            transactionInput.SourceTransactionOutputIndex = blockMemoryStreamReader.ReadUInt32();
+            try
+            {
+                transactionInput.SourceTransactionOutputIndex = blockMemoryStreamReader.ReadUInt32(); // WHERE THINGS GO WRONG
+            } catch (Exception e)
+            {
+                Console.Write("^");
+            }
 
-            int scriptLength = (int)blockMemoryStreamReader.ReadVariableLengthInteger();
-
-            // Ignore the script portion.
-            transactionInput.InputScript = new ByteArray(blockMemoryStreamReader.ReadBytes(scriptLength));
-
-            // Ignore the sequence number. 
-            blockMemoryStreamReader.SkipBytes(4);
+            try
+            {
+                int scriptLength = (int)blockMemoryStreamReader.ReadVariableLengthInteger();
+                // Ignore the script portion.
+                transactionInput.InputScript = new ByteArray(blockMemoryStreamReader.ReadBytes(scriptLength));
+            } catch (Exception e)
+            {
+                Console.Write("%");
+            }
+           
+            try
+            {
+                // Ignore the sequence number. 
+                blockMemoryStreamReader.SkipBytes(4);
+            } catch (Exception e)
+            {
+                Console.Write("$");
+            }
+            
 
             return transactionInput;
         }
@@ -272,7 +291,40 @@ namespace BitcoinBlockchain.Parser
 
             transaction.TransactionVersion = blockMemoryStreamReader.ReadUInt32();
 
-            int inputsCount = (int)blockMemoryStreamReader.ReadVariableLengthInteger();
+            // int inputsCount = (int)blockMemoryStreamReader.ReadVariableLengthInteger();
+
+            // BEGIN SEGWIT HACK
+            int marker = (int)blockMemoryStreamReader.ReadByte();
+            // Console.WriteLine(marker);
+
+            int inputsCount = 0;
+
+            if (marker == 0x00)
+            {
+                blockMemoryStreamReader.ReadSByte();
+                inputsCount = (int)blockMemoryStreamReader.ReadVariableLengthInteger();
+            } else
+            {
+                switch (marker)
+                {
+                    case var n when (n >= 0x01 && n <= 0xfc):
+                        inputsCount = marker;
+                        break;
+                    case 0xfd:
+                        inputsCount = (int)blockMemoryStreamReader.ReadUInt16();
+                        break;
+                    case 0xfe:
+                        inputsCount = (int)blockMemoryStreamReader.ReadUInt32();
+                        break;
+                    case 0xff:
+                        inputsCount = (int)blockMemoryStreamReader.ReadUInt64();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid VarUInt value.");
+                        break;
+                }
+            }
+            // END SEGWIT HACK
 
             for (int inputIndex = 0; inputIndex < inputsCount; inputIndex++)
             {
@@ -287,6 +339,25 @@ namespace BitcoinBlockchain.Parser
                 TransactionOutput transactionOutput = BlockchainParser.ParseTransactionOutput(blockMemoryStreamReader);
                 transaction.AddOutput(transactionOutput);
             }
+
+            // BEGIN SEGWIT HACK
+            byte temp;
+            if (marker == 0x00)
+            {
+                for (int i = 0; i < inputsCount; i++)
+                {
+                    int item_count = (int)blockMemoryStreamReader.ReadVariableLengthInteger();
+                    for (int j = 0; j < item_count; j++)
+                    {
+                        int witness_len = (int)blockMemoryStreamReader.ReadVariableLengthInteger();
+                        for (int k = 0; k < witness_len; k++)
+                        {
+                            temp = blockMemoryStreamReader.ReadByte();
+                        }
+                    }
+                }
+            }
+            // END SEGWIT HACK
 
             // TODO: Need to find out more details about the semantic of TransactionLockTime.
             transaction.TransactionLockTime = blockMemoryStreamReader.ReadUInt32();
@@ -329,14 +400,16 @@ namespace BitcoinBlockchain.Parser
 
             for (int transactionIndex = 0; transactionIndex < blockTransactionCount; transactionIndex++)
             {
-                try
+                /*try
                 {
                     Transaction transaction = BlockchainParser.ParseTransaction(blockMemoryStreamReader);
                     block.AddTransaction(transaction);
                 } catch (Exception e)
                 {
                     Console.Write("@");
-                }
+                }*/
+                Transaction transaction = BlockchainParser.ParseTransaction(blockMemoryStreamReader);
+                block.AddTransaction(transaction);
             }
 
             return block;
@@ -509,6 +582,7 @@ namespace BitcoinBlockchain.Parser
             }
 
             int blockLength = (int)binaryReader.ReadUInt32();
+            // Console.Write(String.Format("\rLen: {0}", blockLength));
             byte[] blockBuffer = binaryReader.ReadBytes(blockLength);
 
             using (BlockMemoryStreamReader blockMemoryStreamReader = new BlockMemoryStreamReader(blockBuffer))

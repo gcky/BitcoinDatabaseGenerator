@@ -6,3 +6,11 @@ C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\bin\Debug\Bi
 C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\obj\Debug\BitcoinBlockchain.csproj.CoreCompileInputs.cache
 C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\obj\Debug\BitcoinBlockchain.dll
 C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\obj\Debug\BitcoinBlockchain.pdb
+C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\bin\Debug\BitcoinBlockchain.XML
+C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\bin\Debug\BitcoinBlockchain.dll
+C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\bin\Debug\BitcoinBlockchain.pdb
+C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\bin\Debug\BitcoinBlockchain.dll.CodeAnalysisLog.xml
+C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\bin\Debug\BitcoinBlockchain.dll.lastcodeanalysissucceeded
+C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\obj\Debug\BitcoinBlockchain.csproj.CoreCompileInputs.cache
+C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\obj\Debug\BitcoinBlockchain.dll
+C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\obj\Debug\BitcoinBlockchain.pdb

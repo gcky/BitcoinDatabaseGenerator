@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2017\community\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
 <FxCopReport Version="15.0">
  <Targets>
-  <Target Name="C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\bin\Debug\BitcoinBlockchain.dll">
+  <Target Name="C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\bin\Debug\BitcoinBlockchain.dll">
    <Modules>
     <Module Name="bitcoinblockchain.dll">
      <Namespaces>
@@ -10,23 +10,42 @@
        <Types>
         <Type Name="BlockchainParser" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Members>
-          <Member Name="#InternalParseBlockchainFile(System.String,BitcoinBlockchain.Parser.BlockMemoryStreamReader)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+          <Member Name="#ParseBlockHeader(BitcoinBlockchain.Parser.BlockMemoryStreamReader)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.Console.Write(System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2018-03-04 22:25:43Z" FixCategory="DependsOnFix">
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="336">Method 'BlockchainParser.InternalParseBlockchainFile(string, BlockMemoryStreamReader)' passes a literal string as parameter 'value' of a call to 'Console.Write(string)'. Retrieve the following string(s) from a resource table instead: "@".</Issue>
-            </Message>
-            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2018-03-04 22:25:43Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="334">Modify 'BlockchainParser.InternalParseBlockchainFile(string, BlockMemoryStreamReader)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
-            </Message>
-            <Message Id="e" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Status="Active" Created="2018-03-04 22:25:43Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="Warning" Path="C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="334">'BlockchainParser.InternalParseBlockchainFile(string, BlockMemoryStreamReader)' declares a variable, 'e', of type 'Exception', which is never used or is only assigned to. Use this variable or remove it.</Issue>
+            <Message Id="System.Console.Write(System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2018-03-07 17:50:00Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="172">Method 'BlockchainParser.ParseBlockHeader(BlockMemoryStreamReader)' passes a literal string as parameter 'value' of a call to 'Console.Write(string)'. Retrieve the following string(s) from a resource table instead: "*".</Issue>
             </Message>
            </Messages>
           </Member>
-          <Member Name="#ParseBlockHeader(BitcoinBlockchain.Parser.BlockMemoryStreamReader)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+          <Member Name="#ParseTransaction(BitcoinBlockchain.Parser.BlockMemoryStreamReader)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.Console.Write(System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2018-03-04 22:25:43Z" FixCategory="DependsOnFix">
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Gordon\Desktop\BitcoinBlockchain\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="170">Method 'BlockchainParser.ParseBlockHeader(BlockMemoryStreamReader)' passes a literal string as parameter 'value' of a call to 'Console.Write(string)'. Retrieve the following string(s) from a resource table instead: "*".</Issue>
+            <Message Id="System.Console.WriteLine(System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2018-03-07 17:50:00Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="322">Method 'BlockchainParser.ParseTransaction(BlockMemoryStreamReader)' passes a literal string as parameter 'value' of a call to 'Console.WriteLine(string)'. Retrieve the following string(s) from a resource table instead: "Invalid VarUInt value.".</Issue>
+            </Message>
+            <Message Id="VarUInt" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2018-03-07 17:50:00Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="322">Correct the spelling of the unrecognized token 'VarUInt' in the literal '"Invalid VarUInt value."'.</Issue>
+            </Message>
+            <Message Id="temp" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Status="Active" Created="2018-03-07 17:50:00Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="354">'BlockchainParser.ParseTransaction(BlockMemoryStreamReader)' declares a variable, 'temp', of type 'byte', which is never used or is only assigned to. Use this variable or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ParseTransactionInput(BitcoinBlockchain.Parser.BlockMemoryStreamReader)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Console.Write(System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2018-03-07 17:50:00Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="249">Method 'BlockchainParser.ParseTransactionInput(BlockMemoryStreamReader)' passes a literal string as parameter 'value' of a call to 'Console.Write(string)'. Retrieve the following string(s) from a resource table instead: "$".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="240">Method 'BlockchainParser.ParseTransactionInput(BlockMemoryStreamReader)' passes a literal string as parameter 'value' of a call to 'Console.Write(string)'. Retrieve the following string(s) from a resource table instead: "%".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="230">Method 'BlockchainParser.ParseTransactionInput(BlockMemoryStreamReader)' passes a literal string as parameter 'value' of a call to 'Console.Write(string)'. Retrieve the following string(s) from a resource table instead: "^".</Issue>
+            </Message>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2018-03-07 17:50:00Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="228">Modify 'BlockchainParser.ParseTransactionInput(BlockMemoryStreamReader)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="238">Modify 'BlockchainParser.ParseTransactionInput(BlockMemoryStreamReader)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="247">Modify 'BlockchainParser.ParseTransactionInput(BlockMemoryStreamReader)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message Id="e" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Status="Active" Created="2018-03-07 17:50:00Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="228">'BlockchainParser.ParseTransactionInput(BlockMemoryStreamReader)' declares a variable, 'e', of type 'Exception', which is never used or is only assigned to. Use this variable or remove it.</Issue>
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="238">'BlockchainParser.ParseTransactionInput(BlockMemoryStreamReader)' declares a variable, 'e', of type 'Exception', which is never used or is only assigned to. Use this variable or remove it.</Issue>
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\Gordon\Desktop\BitcoinDatabaseGenerator\Sources\BitcoinBlockchain\Parser" File="BlockchainParser.cs" Line="247">'BlockchainParser.ParseTransactionInput(BlockMemoryStreamReader)' declares a variable, 'e', of type 'Exception', which is never used or is only assigned to. Use this variable or remove it.</Issue>
             </Message>
            </Messages>
           </Member>
@@ -59,6 +78,16 @@
    <Email>[none]</Email>
    <MessageLevel Certainty="95">CriticalError</MessageLevel>
    <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204">
+   <Name>Literals should be spelled correctly</Name>
+   <Description>This rule parses the literal string into words, tokenizing compound words, and checks the spelling of each word/token.</Description>
+   <Resolution Name="Default">Correct the spelling of the unrecognized token '{0}' in the literal '{1}'.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/bb264488.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="15.0.0.0" />
   </Rule>
   <Rule TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804">
    <Name>Remove unused locals</Name>
